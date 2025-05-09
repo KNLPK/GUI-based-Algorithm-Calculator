@@ -8,7 +8,7 @@ import sort_logic.MergeSort;
 import sort_logic.HeapSort;
 import sort_logic.Sorter; 
 
-import javax.swing.*;
+import javax.swing.*; 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
