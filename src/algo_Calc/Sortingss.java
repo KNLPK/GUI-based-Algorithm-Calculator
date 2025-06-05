@@ -6,9 +6,9 @@ import sort_logic.QuickSort;
 import sort_logic.InsertionSort;
 import sort_logic.MergeSort;
 import sort_logic.HeapSort;
-import sort_logic.Sorter; 
+import sort_logic.Sorter;
 
-import javax.swing.*; 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +18,8 @@ public class Sortingss {
     private JTextField textField;
     private int key;
     private String tname;
+    private JTextArea textArea_1;
+    private JTextArea textArea;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
@@ -41,39 +43,47 @@ public class Sortingss {
         return 0;
     }
 
+    private void addComponentToFrame(Component component) {
+        frame.getContentPane().add(component);
+    }
+
+    private void setFrameLayout(LayoutManager layoutManager) {
+        frame.getContentPane().setLayout(layoutManager);
+    }
+
     private void initialize() {
         frame = new JFrame();
         frame.setBounds(100, 100, 514, 329);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(null);
+        setFrameLayout(null);
 
-        JTextArea textArea_1 = new JTextArea();
+        textArea_1 = new JTextArea();
         textArea_1.setFont(new Font("Arial", Font.BOLD, 26));
         textArea_1.setBackground(Color.DARK_GRAY);
         textArea_1.setForeground(Color.WHITE);
         textArea_1.setBounds(102, 0, 304, 41);
-        frame.getContentPane().add(textArea_1);
+        addComponentToFrame(textArea_1);
 
         textField = new JTextField();
         textField.setBounds(102, 102, 304, 22);
-        frame.getContentPane().add(textField);
+        addComponentToFrame(textField);
         textField.setColumns(10);
 
         JLabel lblEnterInput = new JLabel("Enter Input");
         lblEnterInput.setBounds(30, 105, 85, 16);
-        frame.getContentPane().add(lblEnterInput);
+        addComponentToFrame(lblEnterInput);
 
         JTextArea textArea = new JTextArea();
         textArea.setLineWrap(true);
         textArea.setEditable(false);
         textArea.setBounds(102, 175, 304, 56);
-        frame.getContentPane().add(textArea);
+        addComponentToFrame(textArea);
 
         JButton btnSubmit = new JButton("Submit");
         btnSubmit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String str = textField.getText();
-                int[] num = Utils.parseInput(str); 
+                int[] num = Utils.parseInput(str);
                 String result = "";
 
                 Sorter sorter = null;
@@ -99,7 +109,7 @@ public class Sortingss {
                 }
 
                 if (sorter != null) {
-                    result = sorter.sort(num); 
+                    result = sorter.sort(num);
                 }
 
                 textArea.setText(result);
@@ -107,16 +117,16 @@ public class Sortingss {
             }
         });
         btnSubmit.setBounds(210, 137, 97, 25);
-        frame.getContentPane().add(btnSubmit);
+        addComponentToFrame(btnSubmit);
 
         JLabel lblIntegerMustBe = new JLabel("Integer must be space separated in your input");
         lblIntegerMustBe.setFont(new Font("Arial Black", Font.PLAIN, 14));
         lblIntegerMustBe.setBounds(29, 48, 408, 41);
-        frame.getContentPane().add(lblIntegerMustBe);
+        addComponentToFrame(lblIntegerMustBe);
 
         JLabel lblYourOutput = new JLabel("Your Output");
         lblYourOutput.setBounds(30, 178, 112, 16);
-        frame.getContentPane().add(lblYourOutput);
+        addComponentToFrame(lblYourOutput);
 
         JButton btnExit = new JButton("Exit");
         btnExit.addActionListener(new ActionListener() {
@@ -124,8 +134,8 @@ public class Sortingss {
                 frame.setVisible(false);
             }
         });
-        
+
         btnExit.setBounds(210, 244, 97, 25);
-        frame.getContentPane().add(btnExit);
+        addComponentToFrame(btnExit);
     }
 }
